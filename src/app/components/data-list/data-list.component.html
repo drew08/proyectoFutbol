@@ -1,0 +1,124 @@
+<div class="container pt-5">
+    <div  class="py-2">
+        <button routerLink="/dataCreate/" type="submit" class="btn btn-success">CREAR NUEVO</button>
+    </div> 
+    <div class="row">
+        <div class="col-md-3">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Buscar por Id
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="border" >
+                            <div class="form-outline p-2" >
+                                <label for="getDataId">Buscar por Id</label>
+                                <input class="form-control mr-sm-2" type="text" name="searchTerm" [(ngModel)]="searchTerm"  placeholder="Buscar por Id" aria-label="Buscar"> 
+                            </div>
+                            <div class=" p-2 text-center pt-4">
+                                <button type="submit" (click)="getDataById()" class="btn btn-primary">Buscar</button>
+                                <button type="submit" (click)="getData()" class="btn btn-primary mx-2">limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Buscar por fechas
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="border">
+                            <div class=" p-2 text-center">
+                                <p class=" font-weight-bold" >Buscar por fechas</p>
+                            </div>
+                            <div class="form-outline p-2">
+                                <label for="Fecha_inicial">Fecha inicial</label>
+                                <input [(ngModel)]="startDate" class="form-control mr-sm-2" type="text" name="searchTerm"  placeholder="DD-MM-YYYY" aria-label="Buscar"> 
+                            </div>
+                            <div class="form-outline p-2">
+                                <label for="fecha_final">fecha final</label>
+                                <input [(ngModel)]="EndDate" class="form-control mr-sm-2" type="text" name="searchTerm"  placeholder="DD-MM-YYYY" aria-label="Buscar"> 
+                            </div>  
+                            <div class=" p-2 text-center">
+                                <button type="submit" (click)="getDataByDate()" class="btn btn-primary">Buscar</button>
+                                <button type="submit" (click)="getData()" class="btn btn-primary mx-2">limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+  
+      <div class="col-md-3 pt-4" *ngFor="let data of dataDetails | filter:searchKey:'nombre' | paginate: { itemsPerPage: 12, currentPage: page, totalItems: totalData }  ; let ind=index">
+
+            <div class="card border-dark text-dark"  >
+                
+                <div class="card-body pt-4">
+                    <div  class="card-title px-3  d-flex overlay-text image-box">
+                        <p class="card-data-text ">&nbsp;{{data.nombre | uppercase }}</p>
+                    </div>
+                    <div class="card-data pt-4">
+                        <div class="d-flex ">
+                            <label class="card-data-label" for="card--status">estadio: </label>
+                            <p class="card-data-text card--status">&nbsp;{{data.estadio}}</p>
+                        </div> 
+                        <div class="d-flex ">
+                            <label class="card-data-label">sitioWeb: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.sitioWeb}}</p>
+                        </div>
+                        <div class="d-flex ">
+                            <label class="card-data-label">nacionalidad: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.nacionalidad}}</p>
+                        </div>
+                        <div class="d-flex ">
+                            <label class="card-data-label">fundacion: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.fundacion}}</p>
+                        </div>
+                        <div class="d-flex ">
+                            <label class="card-data-label">entrenador: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.entrenador}}</p>
+                        </div> 
+                        <div class="d-flex ">
+                            <label class="card-data-label">capacidad: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.capacidad}}</p>
+                        </div> 
+                        <div class="d-flex ">
+                            <label class="card-data-label">valor: </label>
+                            <p class="card-data-text card--gender">&nbsp;{{data.valor}}</p>
+                        </div> 
+                        <div class="py-2">
+                            <button  routerLink="/dataUpdate/{{data.id}}" class="btn btn-primary">Actualizar</button>
+                            <button (click)="deleteData(data.id)"  class="btn btn-danger mx-2">Eliminar</button>  
+                        </div>              
+                    </div>
+                   
+                </div>
+            </div>
+         
+      </div>
+    </div>
+    <div class="p-4 ">
+        <pagination-controls (pageChange)="page = $event; dataDetails = []; getData()" previousLabel="anterior" nextLabel="siguiente"></pagination-controls>
+   </div>
+
+
+
+  </div>
+
+
+  
+
+
+

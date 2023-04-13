@@ -1,0 +1,56 @@
+<ng-container >
+    <div class=" py-2">
+        <div class="container my-4">
+                <div class="my-4 ">
+                    <button routerLink="/dataList" class="btn btn-primary">Volver</button>
+                </div>
+                <form #dataForm="ngForm" (ngSubmit)="updateData(dataForm.value)">
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="nombre">Nombre</label>
+                            <input [(ngModel)]="dataDetails.nombre" ngModel name="nombre" type="nombre" class="form-control" id="nombre" aria-describedby="nombre" placeholder="nombre">
+                        </div>
+                            <div class="form-group  col">
+                            <label for="estadio">Estadio</label>
+                        <input [(ngModel)]="dataDetails.estadio" ngModel name="estadio" type="text" class="form-control" id="estadio" placeholder="estadio">
+                        </div>
+                    </div> 
+                    <div class="row my-4">   
+                        <div class="form-group col">
+                            <label for="sitioWeb">SitioWeb</label>
+                            <input [(ngModel)]="dataDetails.sitioWeb" ngModel name="sitioWeb" type="text" class="form-control" id="sitioWeb" placeholder="sitioWeb">
+                        </div>
+                        <div class="form-group col">
+                            <label for="nacionalidad">Nacionalidad</label>
+                            <input [(ngModel)]="dataDetails.nacionalidad" ngModel name="nacionalidad" type="text" class="form-control" id="nacionalidad" placeholder="nacionalidad">
+                        </div>
+                    </div>
+                    <div class="row my-4">     
+                        <div class="form-group col">
+                            <label for="fundacion">Fundacion</label>
+                            <input [(ngModel)]="dataDetails.fundacion" ngModel name="fundacion" type="text" class="form-control" id="fundacion" placeholder="fundacion">
+                        </div>
+                        <div class="form-group col">
+                            <label for="entrenador">Entrenador</label>
+                            <input [(ngModel)]="dataDetails.entrenador" ngModel name="entrenador" type="text" class="form-control" id="entrenador" placeholder="entrenador">
+                        </div>
+                    </div> 
+                    <div class="row my-4">   
+                        <div class="form-group col">
+                            <label for="capacidad">Capacidad</label>
+                            <input [(ngModel)]="dataDetails.capacidad" ngModel name="capacidad" type="text" class="form-control" id="capacidad" placeholder="capacidad">
+                        </div>
+                        <div class="form-group col">
+                            <label for="valor">Valor</label>
+                            <input [(ngModel)]="dataDetails.valor" ngModel name="valor" type="text" class="form-control" id="valor" placeholder="valor">
+                        </div>           
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                  </form>
+           
+        </div>
+    
+    </div>
+
+</ng-container>
+
