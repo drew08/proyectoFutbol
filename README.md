@@ -1,3 +1,21 @@
+# info:
+
+para la paginacion:  npm install ngx-pagination --save
+
+se uso bootstrap: npm i  bootstrap jquery @popperjs/core
+
+# componentes creados:
+data-list: lista de equiposs.
+data-create: formulario para crear nuevos equipos
+data-update: formulario para actualizar equipos
+nav-bar: barra con el buscador(pipe), permite buscar los equipos por el nombre.
+
+# servicios creados:
+my-data : servicio para llamar al API y obtener los datos.
+
+# pipes : 
+shared/ filter.pipe : para dar funcionalidad al buscador de equipos que se encuentra en el componente nav-bar.
+
 # ProyectoFutbol
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
