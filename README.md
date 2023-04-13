@@ -6,8 +6,11 @@ se uso bootstrap: npm i  bootstrap jquery @popperjs/core
 
 # componentes creados:
 data-list: lista de equiposs.
+
 data-create: formulario para crear nuevos equipos
+
 data-update: formulario para actualizar equipos
+
 nav-bar: barra con el buscador(pipe), permite buscar los equipos por el nombre.
 
 # servicios creados:
