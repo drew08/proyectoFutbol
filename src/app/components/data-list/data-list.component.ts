@@ -19,7 +19,7 @@ export class dataListComponent implements OnInit {
  EndDate:string = "";
  sentAlertError: boolean  = false;
  msgError: String  = 'Error';
-constructor( private myDataService: MyDataService) { }
+ constructor( private myDataService: MyDataService) { }
    public searchTerm : number = 0;
    ngOnInit(): void {
    this.getData();
@@ -50,6 +50,7 @@ constructor( private myDataService: MyDataService) { }
       debugger;
       let status =  result;
       this.removeItem(id);
+      this.sentAlertError = false;
     },
     (error) => {  
       debugger;   //Error callback
@@ -78,6 +79,7 @@ constructor( private myDataService: MyDataService) { }
       this.totalData = 1;
       this.dataDetails = [];
       this.dataDetails.push(result);
+      this.sentAlertError = false;
     },
     (error) => {  
       debugger;   //Error callback
@@ -96,6 +98,7 @@ constructor( private myDataService: MyDataService) { }
       this.totalData = 1;
       this.dataDetails = [];
       this.dataDetails = result;
+      this.sentAlertError = false;
     },
     (error) => {  
       debugger;   //Error callback
@@ -105,8 +108,5 @@ constructor( private myDataService: MyDataService) { }
     } 
     );
   }
-
-
- 
 
 }

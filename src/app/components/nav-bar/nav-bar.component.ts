@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';  // <<<< import it here
 import { dataListComponent } from 'src/app/components/data-list/data-list.component';
 import { MyDataService } from 'src/app/services/my-data.service';
 
-
-
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -19,10 +17,9 @@ export class NavBarComponent implements OnInit {
  
   ngOnInit(): void {
 
-
   }
 
-  
+
   search(event:any){
 
     this.searchTerm = (event.target as HTMLInputElement).value;

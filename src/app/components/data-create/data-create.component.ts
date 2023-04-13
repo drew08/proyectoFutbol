@@ -24,7 +24,7 @@ export class DataCreateComponent implements OnInit {
       debugger;
       this.sentAlert = true;
       this.newId= result.id;
-
+      this.sentAlertError = false;
     },
     (error) => {  
       debugger;   //Error callback
@@ -38,16 +38,19 @@ export class DataCreateComponent implements OnInit {
 
   doLogin(){
     debugger;
-    const user = { Usuario: '', Password: '' };
-    this.myDataService.login(user).subscribe(
-      response => {
-          if(response) {
-            debugger;
-          } else {
-            debugger;
-          }
-      } 
-  );
+    let user  = "test";
+    let pass  = "test";
+    this.myDataService.dologin(user,pass).subscribe((result:any)=>
+    {
+        debugger; 
+        let check = result;
+    },
+    (error) => {  
+      debugger;   //Error callback
+      console.error('error login')
+    }
+    );
   }
+ 
 
 }

@@ -33,6 +33,7 @@ export class DataUpdateComponent implements OnInit {
       debugger;
       var dataDetails = result.content;
       this.updateAlert = true;
+      this.sentAlertError = false;
     },
     (error) => {  
       debugger;   //Error callback
