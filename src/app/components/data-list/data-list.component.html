@@ -57,15 +57,16 @@
             </div>
         </div>
     </div>
-
-
+    <div class="pt-4">
+        <p class="alert alert-danger" *ngIf="sentAlertError" >{{msgError}}</p>
+    </div>
     <div class="row">
   
       <div class="col-md-3 pt-4" *ngFor="let data of dataDetails | filter:searchKey:'nombre' | paginate: { itemsPerPage: 12, currentPage: page, totalItems: totalData }  ; let ind=index">
 
-            <div class="card border-dark text-dark"  >
+            <div class="card border-dark text-dark "  >
                 
-                <div class="card-body pt-4">
+                <div class="card-body pt-4 ">
                     <div  class="card-title px-3  d-flex overlay-text image-box">
                         <p class="card-data-text ">&nbsp;{{data.nombre | uppercase }}</p>
                     </div>
@@ -98,15 +99,15 @@
                             <label class="card-data-label">valor: </label>
                             <p class="card-data-text card--gender">&nbsp;{{data.valor}}</p>
                         </div> 
-                        <div class="py-2">
-                            <button  routerLink="/dataUpdate/{{data.id}}" class="btn btn-primary">Actualizar</button>
-                            <button (click)="deleteData(data.id)"  class="btn btn-danger mx-2">Eliminar</button>  
+                        <div class="py-2 px-4 ">
+                            <button  routerLink="/dataUpdate/{{data.id}}" class="btn card-button">Actualizar</button>
+                            <button (click)="deleteData(data.id)"  class=" mt-2 btn card-button-red ">Eliminar</button>  
                         </div>              
                     </div>
                    
                 </div>
             </div>
-         
+            
       </div>
     </div>
     <div class="p-4 ">

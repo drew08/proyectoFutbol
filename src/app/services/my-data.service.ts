@@ -17,7 +17,6 @@ export class MyDataService {
  getData(limit: number, offset: number){
   debugger;
   return this.http.get(`${this.baseURL}/listar/${offset}/${limit}`);
-  debugger;
  }
 
  createData(data:{}){
@@ -32,37 +31,31 @@ export class MyDataService {
   const headers = { 'content-type': 'application/json'}  
   const body=JSON.stringify(data);
   return this.http.put(`${this.baseURL}/actualizar/${id}`, body, {'headers':headers});
-  debugger;
  }
 
  deleteData(id: number){
   debugger;
   return this.http.delete(`${this.baseURL}/eliminar/${id}`);
-  debugger;
  }
 
  getDataByID(id: number){
   debugger;
   return this.http.get(`${this.baseURL}/consultar/${id}`);
-  debugger;
  }
 
  getDataByDate(start: String, end: String){
   debugger;
   return this.http.get(`${this.baseURL}/consultar/${start}/${end}/`);
-  debugger;
  }
 
  login(user: any){
   debugger;
   return this.http.post("https://wo-fifa.azurewebsites.net/login", user);
-  debugger;
  }
 
  logout(user: any){
   debugger;
   return this.http.post(`https://wo-fifa.azurewebsites.net/logout`, user);
-  debugger;
  }
 
 

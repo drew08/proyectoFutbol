@@ -11,16 +11,14 @@ import { MyDataService } from 'src/app/services/my-data.service';
 export class dataListComponent implements OnInit {
  searchKey:string = "";
  page = 1;
- totalData:number = 10;
- model = '';
- filterPost = '';
+ totalData:number = 12;
 
  dataDetails: any[] = [];
- dataType: any[] = [];
  
  startDate:string = "";
  EndDate:string = "";
-
+ sentAlertError: boolean  = false;
+ msgError: String  = 'Error';
 constructor( private myDataService: MyDataService) { }
    public searchTerm : number = 0;
    ngOnInit(): void {
@@ -28,6 +26,7 @@ constructor( private myDataService: MyDataService) { }
    this.search();
   }
 
+  // buscar por nombre
   search(){
     this.myDataService.search.subscribe((val:any)=>{
       this.searchKey = val;
@@ -41,45 +40,70 @@ constructor( private myDataService: MyDataService) { }
       debugger;
       this.totalData =  result.totalPages;
       this.dataDetails = result.content;
-      console.log(this.dataDetails);
-      debugger;
     });
   }
 
+  // eliminar llamdo  api
   deleteData(id:number){
     this.myDataService.deleteData(id).subscribe((result:any)=>
     {
       debugger;
-      var status =  result.content;
-      debugger;
-    });
+      let status =  result;
+      this.removeItem(id);
+    },
+    (error) => {  
+      debugger;   //Error callback
+      this.sentAlertError = true;
+      this.msgError = "Error: no es posible Eliminar.";
+      console.error('error caught in component')
+    } 
+    );
   }
 
+  // remover elemento del array
+  removeItem(id:number){
+    debugger;
+    this.dataDetails.map((a:any, index:any)=>{
+      if(id === a.id){
+        this.dataDetails.splice(index,1);
+      }
+    })
+  }
 
+  // obtener elemento por parametro id
   getDataById(){
     debugger;
-    //this.searchTerm =  Number((event.target as HTMLInputElement).value);
     this.myDataService.getDataByID(this.searchTerm).subscribe((result:any)=>
     {
-      debugger;
       this.totalData = 1;
       this.dataDetails = [];
       this.dataDetails.push(result);
-      debugger;
-    });
+    },
+    (error) => {  
+      debugger;   //Error callback
+      this.sentAlertError = true;
+      this.msgError = "Error: El elemento no existe";
+      console.error('error caught in component')
+    }    
+    );
   }
 
+  // obtener elemento por rango de fecha
   getDataByDate(){
     debugger;
-    //this.searchTerm =  Number((event.target as HTMLInputElement).value);
     this.myDataService.getDataByDate(this.startDate,this.EndDate).subscribe((result:any)=>
     {
-      debugger;
       this.totalData = 1;
       this.dataDetails = [];
       this.dataDetails = result;
-      debugger;
-    });
+    },
+    (error) => {  
+      debugger;   //Error callback
+      this.sentAlertError = true;
+      this.msgError = "Error: El elemento no existe";
+      console.error('error caught in component')
+    } 
+    );
   }
 
 

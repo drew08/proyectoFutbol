@@ -7,7 +7,9 @@ import { MyDataService } from 'src/app/services/my-data.service';
   styleUrls: ['./data-create.component.scss']
 })
 export class DataCreateComponent implements OnInit {
-
+  sentAlert: boolean  = false;
+  sentAlertError: boolean  = false;
+  newId: number  = 0;
   
   constructor( private myDataService: MyDataService) { }
 
@@ -20,11 +22,18 @@ export class DataCreateComponent implements OnInit {
     this.myDataService.createData(data).subscribe((result:any)=>
     {
       debugger;
-      var dataDetails = result.content;
-      //console.log(this.dataDetails);
-      debugger;
+      this.sentAlert = true;
+      this.newId= result.id;
 
-    });
+    },
+    (error) => {  
+      debugger;   //Error callback
+      this.sentAlertError = true;
+      console.error('error caught in component')
+
+    }
+    
+    );
   }
 
   doLogin(){

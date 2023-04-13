@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DataUpdateComponent implements OnInit {
   dataDetails:any;
   dataID:any;
+  updateAlert: boolean  = false;
+  sentAlertError: boolean  = false;
   constructor(private activatedRoute: ActivatedRoute, private myDataService: MyDataService) { }
 
   ngOnInit(): void {
@@ -22,7 +24,6 @@ export class DataUpdateComponent implements OnInit {
     {
       debugger;
       this.dataDetails = result;
-      debugger;
     });
   }
 
@@ -31,10 +32,16 @@ export class DataUpdateComponent implements OnInit {
     {
       debugger;
       var dataDetails = result.content;
-      //console.log(this.dataDetails);
-      debugger;
+      this.updateAlert = true;
+    },
+    (error) => {  
+      debugger;   //Error callback
+      this.sentAlertError = true;
+      console.error('error caught in component')
 
-    });
+    }
+    
+    );
   }
 
 
